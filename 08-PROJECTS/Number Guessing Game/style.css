@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Caucasian+Albanian&family=Rubik+Spray+Paint&display=swap');
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 3rem;
+    /* height: 100vh; */
+}
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* max-width: 600px; */
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin: 2rem 0 0 0;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1{
+    margin-bottom: 1rem;
+}
+p{
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+button{
+    display: block;
+    padding: 10px 20px;
+    width: 100%;
+    /* max-width: 250px; */
+    background-color: #696464;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 5px;
+}
+input[type="number"]{
+    padding: 10px;
+    /* width: 100%; */
+    width: 250px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+#attempts{
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}

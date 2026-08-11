@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>NUMBER GUESSING GAME</title>
+</head>
+<body>
+   <section class="game">
+     <h1>NUMBER GUESSING GAME</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <div class="buttons">
+        <input type="number" id="guessInput" min="1" max="100">
+        <button id="submitBtn">Submit Guess</button>
+        <button id="resetBtn">Reset Game</button>
+    </div>
+    <!-- need to display number of attempts -->
+    <p id="attempts">Attempts: 0</p>
+    <p id="message"></p>
+   </section>
+</body>
+<script src="script.js"></script>
+</html>
