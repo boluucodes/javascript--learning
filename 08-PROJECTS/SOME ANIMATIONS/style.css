@@ -29,20 +29,40 @@ body{
     transform: translateX(300px) rotate(30deg);
     /* rotate: calc(45deg); */
 }
-button{
+#btn{
     background: red;
     padding: 1rem 2rem;
     border: none;
     cursor: pointer;
+    position: relative;
     border-radius: 5px;
+    overflow: hidden;
+    transition: all .3s;
     margin-bottom: 2rem;
     color: #fff;
+    z-index: 1;
 }
+#btn::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all .3s;
+    width: 0%;
+    height: 100%;
+    background: #a04444;
+    z-index: -1;
+}
+#btn:hover::before{
+    width: 100%;
+}
+
 .animate{
     background: #00ccff;
     padding: .75rem 1.25rem;
     border-radius: 5px;
     transition: all .3s;
+    border: none;
     position: relative;
     overflow: hidden;
     z-index: 1;
