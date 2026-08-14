@@ -1,39 +1,3 @@
-This is my first project in a while:
-    the logic is simple- create a program that scans for the following;
-
-    Start at 1
-        |
-        |
-        |
-
-    For every number:
-    Is it divisible by 3 AND 5?
-        Yes → FizzBuzz
-
-    Otherwise, is it divisible by 3?
-        Yes → Fizz
-
-    Otherwise, is it divisible by 5?
-        Yes → Buzz
-
-    Otherwise:
-        Print the number
-
-
-
-
-1. Project Title
-2. Project Description
-3. Preview / Screenshot
-4. Features
-5. Tech Stack
-6. How It Works
-7. Installation / Setup
-8. Usage
-9. What I Learned
-10. Challenges & Solutions
-11. Future Improvements
-12. Author
 
 ## Markdown
 
@@ -69,7 +33,7 @@ A simple interactive fizzbuzz web application built with HTML, CSS, JAVASCRIPT.
 ## REPO LINK
 https://github.com/boluucodes/javascript--learning.git
 
-## LIVELINK
+## LIVE LINK
 https://boluucodes.github.io/javascript--learning/08-PROJECTS/Fizzbuzz/
 
 ## USAGE
