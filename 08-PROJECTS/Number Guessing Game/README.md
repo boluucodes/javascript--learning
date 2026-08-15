@@ -35,7 +35,7 @@ https://github.com/boluucodes/javascript--learning.git
 
 
 ## LIVE LINK
-
+https://boluucodes.github.io/javascript--learning/08-PROJECTS/Number%20Guessing%20Game/
 
 
 ## WHAT I LEARNED
