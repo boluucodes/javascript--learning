@@ -39,7 +39,8 @@ body{
 button{
    padding: 1.5rem 3rem;
    margin: 2rem 0;
-   width: 150px; 
+   width: 190px;
+   /* max-width: 190px;  */
    font-size: 25px;
    /* background-color: #0B2227; */
    font-weight: 700;
@@ -56,4 +57,44 @@ button:active{
 h1{
     
     text-transform: uppercase;
+}
+
+@media (max-width: 768px){
+    .buttons{
+        gap: 1rem;
+    }
+    button{
+        font-weight: 500;
+        padding: 1rem 1.5rem;
+        font-size: 20px;
+        max-width: 150px;
+    }
+    #count{
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .buttons{
+        flex-direction: column;
+
+    }
+    h1{
+        font-size: 1rem;
+    }
+
+}
+
+@media screen and (max-width: 340px) {
+    button{
+        max-width: 80px;
+        font-weight: 300;
+        font-size: 15px;
+    }
+    h1{
+        font-size: 10px;
+    }
+    #count{
+        font-size: 40px;
+    }
 }
