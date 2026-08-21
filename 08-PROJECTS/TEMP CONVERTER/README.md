@@ -21,6 +21,8 @@ A simple temperature converter application built with HTML, CSS AND JAVASCRIPT.
 - returns answer with the desired unit
 - The page is reset after the reset btn is clicked.
 - repeat
+## PREVIEW
+![alt text](image.png)
 
 # TECH STACK
 - HTML5
@@ -38,3 +40,6 @@ Through this project, I practiced:
 - Event listeners
 - Local and Outer scopes
 - Maths op
+
+## LIVE LINK
+https://boluucodes.github.io/javascript--learning/08-PROJECTS/TEMP%20CONVERTER/

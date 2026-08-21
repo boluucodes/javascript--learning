@@ -93,3 +93,49 @@ body{
     width: 99.7%;
 }
 
+#clickBtn{
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 1.5rem 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+} 
+#clickBtn:active {
+  transform: scale(0.9);
+}
+.clicked {
+  animation: bounce 0.2s ease;
+}
+
+/* @keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+} */
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(.85);
+    }
+    70%{
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

@@ -10,3 +10,14 @@ btn.addEventListener('click', () => {
     // to optimize the functionality, we use toggle method to add and remove the class on each click, allowing the animation to be triggered multiple times.
     box.classList.toggle('move');
 })
+
+
+const button = document.getElementById("clickBtn");
+
+button.addEventListener("click", () => {
+  button.classList.add("clicked");
+
+  setTimeout(() => {
+    button.classList.remove("clicked");
+  }, 200);
+});
