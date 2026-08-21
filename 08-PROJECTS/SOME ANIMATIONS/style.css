@@ -139,3 +139,46 @@ body{
         transform: scale(1);
     }
 }
+
+#bubble{
+  position: relative;
+  overflow: hidden;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+
+}
+.ripple {
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+
+  transform: scale(0);
+
+  animation: rippleEffect 0.5s linear;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+/* scale(0)
+   ↓
+tiny circle
+   ↓
+scale(10)
+   ↓
+large circle
+   ↓
+opacity 0
+   ↓
+disappears */
+
