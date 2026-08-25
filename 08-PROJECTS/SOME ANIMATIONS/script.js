@@ -42,4 +42,4 @@ bubbleBtn.addEventListener("click", (event)=> {
   effect.addEventListener("animationend", () => {
     effect.remove();
   });
-});
+});N
