@@ -398,7 +398,7 @@ h1 {
     padding: 5px 9px;
 
     border-radius: 20px;
-
+  
     background: #18251f;
 
     color: #55c98a;
@@ -429,6 +429,11 @@ h1 {
 
 .task:last-child {
     border-bottom: none;
+}
+
+.task-input-area{
+    margin-left: 18px;
+    opacity: 0;
 }
 
 .checkbox {
@@ -568,6 +573,30 @@ h1 {
     letter-spacing: -3px;
 }
 
+.progress-bar {
+    width: 220px;
+    height: 6px;
+
+    margin-top: 20px;
+
+    background: #252d38;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+
+    background: #7c5cff;
+
+    border-radius: 10px;
+
+    transition: width 0.3s ease;
+}
+
 .focus-content p {
     max-width: 220px;
 
@@ -581,7 +610,7 @@ h1 {
     text-align: center;
 }
 
-.start-focus {
+.start-focus,.reset-focus {
     padding: 11px 18px;
 
     border: 1px solid #303947;
@@ -593,7 +622,7 @@ h1 {
     color: #e8ebef;
 
     font-size: 13px;
-
+    margin-bottom: 10px;
     cursor: pointer;
 }
 
@@ -607,6 +636,9 @@ h1 {
     .sidebar {
         width: 200px;
     }
+    nav-left p{
+        opacity: 0;
+    }
 
     .content-grid {
         grid-template-columns: 1fr;
@@ -619,6 +651,9 @@ h1 {
 
     .sidebar {
         display: none;
+    }
+    nav-left p{
+        opacity: 0;
     }
 
     .topbar {
