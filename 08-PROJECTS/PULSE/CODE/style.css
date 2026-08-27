@@ -434,6 +434,22 @@ h1 {
 .task-input-area{
     margin-left: 18px;
     opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-input{    
+    /* flex: 1; */
+    width: 220px;
+}
+.save-task{
+    border: none;
+    padding: 2px 4px;
+    width: 70px;
+    cursor: pointer;
 }
 
 .checkbox {

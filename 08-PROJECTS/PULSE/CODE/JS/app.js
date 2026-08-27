@@ -18,18 +18,36 @@ const completionPercentDisplay = document.querySelector(".completion-percent");
 
 // queryselectorall selects all elements matching a CSS selector
 const checkBoxes = document.querySelectorAll(".checkbox");
-const taskElement = document.querySelectorAll(".task");
 const statPad = document.querySelectorAll(".stat-card");
 // const task = document.querySelector(".task")
 const strong = document.querySelectorAll("strong");
 
 
 //event listener for the taskBtn
+
+let isTaskInputOpen = false;
+
 taskBtn.addEventListener("click", () => {
-    // taskBtn.textContent = "Task added!";
-    taskInputArea.style.opacity = 1;
-    // return;
-})
+
+    if (isTaskInputOpen) {
+
+        // close input
+        taskBtn.textContent = "Add task";
+        taskInputArea.style.opacity = 0;
+        
+
+        isTaskInputOpen = false;
+
+    } else {
+
+        // open input
+        taskBtn.textContent = "Done?";
+        taskInputArea.style.opacity = 1;
+        taskInputArea.style.pointerEvents = "auto";
+        isTaskInputOpen = true;
+    }
+
+});
 
 // add new tasks
 
@@ -59,16 +77,19 @@ saveTaskBtn.addEventListener("click", () => {
     taskList.appendChild(newTask);
 
     taskInput.value = "";
+    updateStats();
 
 })
 
 // calculate tasks stats
 function updateStats(){
+    const taskElement = document.querySelectorAll(".task");
     const totalTasks = taskElement.length;
     const completedTask = document.querySelectorAll(".task.completed");
     const completedTasks = completedTask.length;
     const remainingTasks = totalTasks - completedTasks;
     const completionPercent = ((completedTasks/totalTasks) * 100).toFixed(0);
+
 // display the calculated value on the page
     totalTextCount.textContent = totalTasks;
     completedTextCount.textContent = completedTasks;
