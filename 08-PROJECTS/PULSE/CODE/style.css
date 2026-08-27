@@ -80,6 +80,9 @@ body {
 
     color: #626b78;
 }
+nav-left p{
+    opacity: 0;
+}
 
 .nav-item {
     display: flex;
@@ -473,6 +476,18 @@ h1 {
         background 0.2s ease,
         border-color 0.2s ease,
         transform 0.15s ease;
+}
+.delete-task {
+    border: none;
+    background: transparent;
+    color: #68727f;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.delete-task:hover {
+    color: #ed7373;
 }
 
 .checkbox::after {

@@ -4,7 +4,7 @@ const taskInput = document.querySelector(".task-input");
 const taskInputArea = document.querySelector(".task-input-area");
 const saveTaskBtn = document.querySelector(".save-task");
 const taskList = document.querySelector(".task-list");
-const newTask = document.createElement("div");
+// const newTask = document.createElement("div");
 const focusBtn = document.querySelector(".start-focus");
 const resetBtn = document.querySelector(".reset-focus");
 const timer = document.querySelector(".timer");
@@ -14,6 +14,7 @@ const totalTextCount = document.querySelector(".total-text-count");
 const completedTextCount = document.querySelector(".completed-text-count");
 const remainingTextCount = document.querySelector(".remaining-text-count");
 const completionPercentDisplay = document.querySelector(".completion-percent");
+let tasks = [];
 
 
 // queryselectorall selects all elements matching a CSS selector
@@ -49,35 +50,31 @@ taskBtn.addEventListener("click", () => {
 
 // add new tasks
 
-
 saveTaskBtn.addEventListener("click", () => {
-        if (taskInput.value === "") {
+
+    if (taskInput.value.trim() === "") {
         return;
     }
 
-    const newTask = document.createElement("div");
+    const task = {
+        id: Date.now(),
+        title: taskInput.value.trim(),
+        category: "Personal",
+        priority: "Low",
+        completed: false
+    };
 
-    newTask.classList.add("task");
+    tasks.push(task);
 
-    newTask.innerHTML = `
-        <button class="checkbox"></button>
+    saveTasks();
 
-        <div class="task-info">
-            <h3>${taskInput.value}</h3>
-            <p>Personal</p>
-        </div>
+    renderTasks();
 
-        <span class="priority low">
-            Low
-        </span>
-    `;
-
-    taskList.appendChild(newTask);
-
-    taskInput.value = "";
     updateStats();
 
-})
+    taskInput.value = "";
+
+});
 
 // calculate tasks stats
 function updateStats(){
@@ -105,15 +102,46 @@ function updateStats(){
 
 // checkboxes
 taskList.addEventListener("click", (event) =>{
-    // to get an action when the checkbox is clicked
-    if(event.target.classList.contains("checkbox")){
-        if (event.target.classList.contains("checkbox")) {
-        const clickedTask = event.target.closest(".task");
+    // DELETE TASK
+    const deleteButton = event.target.closest(".delete-task");
+
+    if (deleteButton) {
+
+    const clickedTask = deleteButton.closest(".task");
+
+    const taskId = clickedTask.dataset.id;
+
+    console.log("Clicked task:", clickedTask);
+    console.log("Data ID:", taskId);
+
+    tasks = tasks.filter((task) => {
+        return task.id !== Number(taskId);
+    });
+
+    saveTasks();
+
+    renderTasks();
+
+    updateStats();
+
+    return;
+}
+
+
+    // COMPLETE TASK
+    const checkbox = event.target.closest(".checkbox");
+
+    if (checkbox) {
+
+        const clickedTask = checkbox.closest(".task");
+
         clickedTask.classList.toggle("completed");
 
         updateStats();
-}
+
     }
+
+    
     
 });
 
@@ -195,3 +223,58 @@ resetBtn.addEventListener("click", () =>{
     focusBtn.textContent = "Start focus session";
     focusStatus.textContent = "Ready";
 })
+
+// local storage code
+
+// save the tasks 
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// load the tasks in the storage
+function loadTasks() {
+    const savedTasks = localStorage.getItem("tasks");
+
+    if (savedTasks) {
+        tasks = JSON.parse(savedTasks);
+    }
+
+}
+
+
+// to render tasks
+
+function renderTasks() {
+
+    taskList.innerHTML = "";
+
+    tasks.forEach((task) => {
+
+        const newTask = document.createElement("div");
+
+        newTask.classList.add("task");
+
+        newTask.dataset.id = task.id;
+
+        newTask.innerHTML = `
+            <button class="checkbox"></button>
+
+            <div class="task-info">
+                <h3>${task.title}</h3>
+                <p>${task.category}</p>
+            </div>
+
+            <span class="priority low">
+                ${task.priority}
+            </span>
+
+            <button class="delete-task">×</button>
+        `;
+
+        taskList.appendChild(newTask);
+
+    });
+}
+
+saveTasks();
+renderTasks();
