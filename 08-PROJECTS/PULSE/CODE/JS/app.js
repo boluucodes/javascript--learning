@@ -17,9 +17,7 @@ const completionPercentDisplay = document.querySelector(".completion-percent");
 
 
 // queryselectorall selects all elements matching a CSS selector
-const checkBoxes = document.querySelectorAll(".checkbox");
 const statPad = document.querySelectorAll(".stat-card");
-// const task = document.querySelector(".task")
 const strong = document.querySelectorAll("strong");
 
 
@@ -106,16 +104,18 @@ function updateStats(){
 };
 
 // checkboxes
-checkBoxes.forEach((checkBox) => {
-    checkBox.addEventListener("click", () => {
-     const clickedTask = checkBox.closest(".task");
+taskList.addEventListener("click", (event) =>{
+    // to get an action when the checkbox is clicked
+    if(event.target.classList.contains("checkbox")){
+        if (event.target.classList.contains("checkbox")) {
+        const clickedTask = event.target.closest(".task");
+        clickedTask.classList.toggle("completed");
 
-     clickedTask.classList.toggle("completed");
-     updateStats();
-     
-    })
+        updateStats();
+}
+    }
+    
 });
-
 
 
 // Calculate the correct statistics
