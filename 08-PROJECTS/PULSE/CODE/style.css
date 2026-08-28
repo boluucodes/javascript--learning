@@ -39,6 +39,83 @@ body {
     flex-direction: column;
 }
 
+body.light-mode {
+    background: #F7F8FA;
+    color: #171A1F;
+}
+
+body.light-mode .sidebar {
+    background: #FFFFFF;
+    border-right: 1px solid #E7E9ED;
+}
+
+body.light-mode .nav-item {
+    color: #6B7280;
+}
+
+body.light-mode .nav-item:hover {
+    background: #F1F3F5;
+    color: #171A1F;
+}
+
+body.light-mode .nav-item.active {
+    background: #F1F3F5;
+    color: #171A1F;
+}
+body.light-mode .stat-card,
+body.light-mode .tasks-panel,
+body.light-mode .focus-panel {
+    background: #FFFFFF;
+    border: 1px solid #E7E9ED;
+}
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+    color: #171A1F;
+}
+
+body.light-mode p {
+    color: #6B7280;
+}
+body.light-mode .task {
+    border-bottom: 1px solid #E7E9ED;
+}
+
+body.light-mode .task:hover {
+    background: #F9FAFB;
+}
+body.light-mode .task-input {
+    background: #F9FAFB;
+    color: #171A1F;
+    border: 1px solid #E7E9ED;
+}
+
+body.light-mode .task-input::placeholder {
+    color: #9CA3AF;
+}
+
+body.light-mode .task-input:focus {
+    background: #FFFFFF;
+    border-color: #B8BDC7;
+    outline: none;
+}
+
+body.light-mode .progress-bar {
+    background: #E7E9ED;
+}
+
+.progress-fill {
+    background: #7C5CFC;
+}
+body.light-mode .progress-bar {
+    background: #E7E9ED;
+    border-radius: 999px;
+}
+
+body.light-mode .progress-fill {
+    border-radius: 999px;
+}
+
 
 /* LOGO */
 
@@ -437,6 +514,7 @@ h1 {
 .task-input-area{
     margin-left: 18px;
     opacity: 0;
+    margin-top: 1rem;
     pointer-events: none;
     transition: opacity 0.2s ease;
     display: flex;
@@ -447,11 +525,13 @@ h1 {
 .task-input{    
     /* flex: 1; */
     width: 220px;
+    height: 2rem;
 }
-.save-task{
+.save-task,.task-priority{
     border: none;
     padding: 2px 4px;
     width: 70px;
+    height: 2rem;
     cursor: pointer;
 }
 

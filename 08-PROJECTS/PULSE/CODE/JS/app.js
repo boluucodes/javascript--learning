@@ -4,10 +4,12 @@ const taskInput = document.querySelector(".task-input");
 const taskInputArea = document.querySelector(".task-input-area");
 const saveTaskBtn = document.querySelector(".save-task");
 const taskList = document.querySelector(".task-list");
-// const newTask = document.createElement("div");
+const priorityInput = document.querySelector(".task-priority");
 const focusBtn = document.querySelector(".start-focus");
 const resetBtn = document.querySelector(".reset-focus");
 const timer = document.querySelector(".timer");
+const viewAllBtn = document.querySelector(".view-all");
+const themeToggle = document.querySelector(".theme-toggle");
 const focusStatus = document.querySelector(".focus-status");
 const progressFill = document.querySelector(".progress-fill")
 const totalTextCount = document.querySelector(".total-text-count");
@@ -15,6 +17,7 @@ const completedTextCount = document.querySelector(".completed-text-count");
 const remainingTextCount = document.querySelector(".remaining-text-count");
 const completionPercentDisplay = document.querySelector(".completion-percent");
 let tasks = [];
+let showAllTasks = false;
 
 
 // queryselectorall selects all elements matching a CSS selector
@@ -60,7 +63,7 @@ saveTaskBtn.addEventListener("click", () => {
         id: Date.now(),
         title: taskInput.value.trim(),
         category: "Personal",
-        priority: "Low",
+        priority: priorityInput.value,
         completed: false
     };
 
@@ -72,40 +75,75 @@ saveTaskBtn.addEventListener("click", () => {
 
     updateStats();
 
+    updateViewAllButton();
+
     taskInput.value = "";
 
 });
 
 // calculate tasks stats
-function updateStats(){
-    const taskElement = document.querySelectorAll(".task");
-    const totalTasks = taskElement.length;
-    const completedTask = document.querySelectorAll(".task.completed");
-    const completedTasks = completedTask.length;
+function updateStats() {
+
+    const totalTasks = tasks.length;
+
+    const completedTasks = tasks.filter((task) => {
+        return task.completed;
+    }).length;
+
     const remainingTasks = totalTasks - completedTasks;
-    const completionPercent = ((completedTasks/totalTasks) * 100).toFixed(0);
 
-// display the calculated value on the page
+    let completionPercent = 0;
+
+    if (totalTasks > 0) {
+        completionPercent =
+            ((completedTasks / totalTasks) * 100).toFixed(0);
+    }
+
     totalTextCount.textContent = totalTasks;
+
     completedTextCount.textContent = completedTasks;
-    remainingTextCount.textContent = `${remainingTasks} remaining today`;
-    completionPercentDisplay.textContent = `${completionPercent}% of today's work`;
 
-    console.log(totalTextCount);
-    console.log(completedTextCount);
-    console.log(remainingTextCount);
-    console.log(completionPercentDisplay);
+    remainingTextCount.textContent =
+        `${remainingTasks} remaining today`;
 
-  
+    completionPercentDisplay.textContent =
+        `${completionPercent}% of today's work`;
+}
 
-};
+// light or dark mode
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-mode");
+
+
+    if (document.body.classList.contains("light-mode")) {
+        themeToggle.textContent = "☾";
+         
+        localStorage.setItem("theme", "light");
+    } else {
+        themeToggle.textContent = "☼";
+
+        localStorage.setItem("theme", "dark");
+    }
+});
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+
+    document.body.classList.add("light-mode");
+
+    themeToggle.textContent = "☼";
+
+}
 
 // checkboxes
 taskList.addEventListener("click", (event) =>{
     // DELETE TASK
     const deleteButton = event.target.closest(".delete-task");
 
-    if (deleteButton) {
+   if (deleteButton) {
 
     const clickedTask = deleteButton.closest(".task");
 
@@ -124,22 +162,34 @@ taskList.addEventListener("click", (event) =>{
 
     updateStats();
 
+    updateViewAllButton();
+
     return;
 }
-
 
     // COMPLETE TASK
     const checkbox = event.target.closest(".checkbox");
 
     if (checkbox) {
 
-        const clickedTask = checkbox.closest(".task");
+    const clickedTask = checkbox.closest(".task");
 
-        clickedTask.classList.toggle("completed");
+    const taskId = Number(clickedTask.dataset.id);
 
-        updateStats();
+    const selectedTask = tasks.find((task) => {
+        return task.id === taskId;
+    });
 
-    }
+    selectedTask.completed = !selectedTask.completed;
+
+    saveTasks();
+
+    renderTasks();
+
+    updateStats();
+    
+
+}
 
     
     
@@ -247,14 +297,26 @@ function loadTasks() {
 function renderTasks() {
 
     taskList.innerHTML = "";
+    
+    let tasksToDisplay;
 
-    tasks.forEach((task) => {
+    if (showAllTasks) {
+        tasksToDisplay = tasks;
+    } else {
+        tasksToDisplay = tasks.slice(0, 4);
+    }
+
+    tasksToDisplay.forEach((task) => {
 
         const newTask = document.createElement("div");
 
         newTask.classList.add("task");
 
         newTask.dataset.id = task.id;
+
+        if (task.completed) {
+    newTask.classList.add("completed");
+}
 
         newTask.innerHTML = `
             <button class="checkbox"></button>
@@ -264,7 +326,7 @@ function renderTasks() {
                 <p>${task.category}</p>
             </div>
 
-            <span class="priority low">
+            <span class="priority ${task.priority.toLowerCase()}">
                 ${task.priority}
             </span>
 
@@ -276,5 +338,42 @@ function renderTasks() {
     });
 }
 
-saveTasks();
+loadTasks();
+
 renderTasks();
+
+updateStats();
+
+updateViewAllButton();
+
+
+
+viewAllBtn.addEventListener("click", () => {
+
+    showAllTasks = !showAllTasks;
+
+    if (showAllTasks) {
+        viewAllBtn.textContent = "Show less";
+    } else {
+        viewAllBtn.textContent = "View all";
+    }
+
+    renderTasks();
+});
+
+function updateViewAllButton() {
+
+    if (tasks.length > 4) {
+
+        viewAllBtn.style.display = "block";
+
+    } else {
+
+        viewAllBtn.style.display = "none";
+
+        showAllTasks = false;
+        viewAllBtn.textContent = "View all";
+
+    }
+
+}
