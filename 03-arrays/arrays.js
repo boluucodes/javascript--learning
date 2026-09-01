@@ -12,4 +12,23 @@ console.log(numbers); // [10, 8, 13, 15, 20];
 
 // Declaring an array with `const` guarantees its type stays fixed while allowing contents to change.
 
+const fruits = ["apple", "banana", "cherry"];
+
+// The callback function runs 3 times (once per fruit)
+fruits.forEach((fruit) => {
+    console.log(fruit);
+});
 // The .forEach(callback) method allows you to run the callback function for every item in that array.
+
+function logUserIds(userIds) {
+    userIds.forEach(function(userId) {
+        console.log(userId);
+    });
+    return true; // ✅ return from the logUserIds function
+}
+// the return keyword returns from its own function
+
+
+array.filter()
+//`filter()` creates a new array containing only elements that pass a test function.
+
