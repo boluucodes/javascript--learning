@@ -31,4 +31,10 @@ function logUserIds(userIds) {
 
 array.filter()
 //`filter()` creates a new array containing only elements that pass a test function.
+//filter() always returns an array. Even if it matched one item or no items.
+
+
+
+array.find()
+// The .find() method returns the first array item that matches the callback condition or undefined.
 
