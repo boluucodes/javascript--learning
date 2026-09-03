@@ -49,3 +49,11 @@ console.log(fruits.includes("date")); // false
 const fruitss = ["apple", "banana", "cherry"];
 console.log(fruitss.join(", ")); // "apple, banana, cherry"
 console.log(fruitss.join(" and ")); // "apple and banana and cherry"
+
+// Option A: Standard function wrapper
+function getStringSizes(strings) {
+    return strings.map((s) => s.length);
+}
+
+// Option B: Full concise ES6 export (matches your exact line)
+export const getStringSizes = (strings) => strings.map((s) => s.length);

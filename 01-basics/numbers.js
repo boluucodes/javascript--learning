@@ -36,4 +36,6 @@ Math.ceil(2.1); // 3
 Math.ceil(2.6); // 3
 // Math.ceil() always "ceils" (rounds up) the number to the next higher integer.
 
+Math.min(1, 2, 3); // 1
+//Math.min(val, limit) acts as a ceiling cap:
 

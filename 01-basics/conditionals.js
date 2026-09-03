@@ -26,3 +26,16 @@ function evenOrOdd(number) {
 }
 // ternary operator is a shorthand for if-else statements. It takes three operands:
 //  a condition, an expression to execute if the condition is true, and an expression to execute if the condition is false.
+
+
+// Ternary Version
+grades.map((grade) => (grade + 1 > 20 ? 20 : grade + 1));
+
+// Traditional if/else Version
+grades.map((grade) => {
+    if (grade + 1 > 20) {
+        return 20;
+    } else {
+        return grade + 1;
+    }
+});

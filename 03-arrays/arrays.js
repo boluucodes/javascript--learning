@@ -33,8 +33,44 @@ array.filter()
 //`filter()` creates a new array containing only elements that pass a test function.
 //filter() always returns an array. Even if it matched one item or no items.
 
+array.includes()
+//`includes()` checks if an array contains a specific element and returns true or false.
 
+array.join()
+//`join()` creates a string from an array, with elements separated by a specified separator.sh
 
 array.find()
 // The .find() method returns the first array item that matches the callback condition or undefined.
 
+
+// Fixed version using your original structure
+export function getAverageValue(grades) {
+    let sum = 0;
+    for (let i = 0; i < grades.length; i++) {
+        sum += grades[i];
+    }
+    return sum / grades.length; // Return the number directly!
+}
+
+//same result but shorter version using reduce
+export function getAverageValue(grades) {
+    return grades.reduce((sum, grade) => sum + grade, 0) / grades.length;
+}
+
+// Fixed version using your original structure
+export function getPassingGrades(grades) {
+    const passingGrades = []; // 1. Declare array OUTSIDE the loop
+
+    for (const grade of grades) {
+        if (grade >= 10) {
+            passingGrades.push(grade); // 2. Push passing grades
+        }
+    }
+
+    return passingGrades; // 3. Return the populated array at the end
+}
+
+// same result but shorter version using filter
+export function getPassingGrades(grades) {
+    return grades.filter((grade) => grade >= 10);
+}
