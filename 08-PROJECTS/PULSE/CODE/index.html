@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULSE</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -21,23 +22,24 @@
 
                 <p class="nav-label">WORKSPACE</p>
 
-                <a href="#" class="nav-item active">
-                    <span>⌂</span>
+
+               <a href="#" class="nav-item active">
+                    <i data-lucide="layout-dashboard"></i>
                     Overview
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span>✓</span>
+               <a href="#" class="nav-item">
+                    <i data-lucide="check-circle"></i>
                     Today
                 </a>
 
                 <a href="#" class="nav-item">
-                    <span>◷</span>
+                    <i data-lucide="clock"></i>
                     Upcoming
                 </a>
 
                 <a href="#" class="nav-item">
-                    <span>✓</span>
+                    <i data-lucide="check-square"></i>
                     Completed
                 </a>
 
@@ -63,12 +65,12 @@
             <div class="sidebar-bottom">
 
                 <a href="#" class="nav-item">
-                    <span>◉</span>
+                    <i data-lucide="target"></i>
                     Focus
                 </a>
 
                 <a href="#" class="nav-item">
-                    <span>⚙</span>
+                    <i data-lucide="settings"></i>
                     Settings
                 </a>
 
@@ -98,6 +100,10 @@
 
             <!-- TOP BAR -->
             <header class="topbar">
+
+                <button class="hamburger">
+                    <i data-lucide="menu"></i>
+                </button>
 
                 <div class="breadcrumb">
                     Overview
@@ -352,7 +358,9 @@
 
         </main>
     </div>
-
+    <script>
+    lucide.createIcons();
+    </script>
     <script src="./JS/app.js"></script>
 </body>
 </html>

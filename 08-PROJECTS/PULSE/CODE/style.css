@@ -112,6 +112,10 @@ body.light-mode .progress-bar {
     border-radius: 999px;
 }
 
+body.light-mode .hamburger {
+    color: #171A1F;
+}
+
 body.light-mode .progress-fill {
     border-radius: 999px;
 }
@@ -239,12 +243,12 @@ nav-left p{
 ================================ */
 
 .topbar {
-    height: 72px;
+    /* height: 72px; */
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    gap: 15px;
     padding: 0 40px;
     border-bottom: 1px solid #1c232d;
 }
@@ -252,12 +256,32 @@ nav-left p{
 .breadcrumb {
     color: #7e8794;
     font-size: 14px;
+    flex: 1;
+    min-width: 0;
+}
+
+.hamburger {
+    display: none;
+    color: #f5f7fa;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hamburger:hover {
+   transform: scale(1.1);
+}
+.hamburger svg {
+    width: 22px;
+    height: 22px;
 }
 
 .top-actions {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .icon-button {
@@ -505,7 +529,33 @@ h1 {
     opacity: 0.5;
 }
 
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+}
 
+.empty-icon {
+    width: 45px;
+    height: 45px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+}
+
+.empty-state h3 {
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    margin: 0;
+}
 .task:last-child {
     border-bottom: none;
 }
@@ -743,6 +793,35 @@ h1 {
 
 @media (max-width: 900px) {
 
+
+     .sidebar{
+        /* display: none; */
+        position: fixed;
+        top: 0; 
+        left: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    .sidebar.open{
+        /* display: block; */
+        transform: translateX(0);
+    }
+        .task-input-area {
+        flex-wrap: wrap;
+        margin-right: 18px;
+    }
+
+    .task-input {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .task-priority,
+    .save-task {
+        width: auto;
+    }
+
     .sidebar {
         width: 200px;
     }
@@ -757,13 +836,46 @@ h1 {
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 766px) {
+   
+    .task-input-area {
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+}
 
+.task-input {
+    width: 100%;
+    min-width: 0;
+}
+
+.task-priority,
+.save-task {
+    width: auto;
+}
     .sidebar {
         display: none;
     }
     nav-left p{
         opacity: 0;
+    }
+    .hamburger {
+        display: block;
+        /* background-color: white; */
+    }   
+
+    .sidebar{
+        /* display: none; */
+        position: fixed;
+        top: 0; 
+        left: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    .sidebar.open{
+        /* display: block; */
+        transform: translateX(0);
     }
 
     .topbar {
@@ -771,7 +883,7 @@ h1 {
     }
 
     .dashboard {
-        padding: 35px 20px;
+        padding: 10px;
     }
 
     .welcome {
@@ -787,5 +899,29 @@ h1 {
     .stats {
         grid-template-columns: 1fr;
     }
+    .stat-card{
+        width: 100%;
+    }
 
+
+}
+
+@media (max-width: 500px) {
+    .topbar {
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .top-actions {
+        gap: 6px;
+    }
+     .icon-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+    }
 }

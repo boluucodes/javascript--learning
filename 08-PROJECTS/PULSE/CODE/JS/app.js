@@ -1,5 +1,7 @@
 // DOM ELEMENTS
 const taskBtn = document.querySelector(".add-task");
+const hamburger = document.querySelector(".hamburger");
+const sidebar = document.querySelector(".sidebar");
 const taskInput = document.querySelector(".task-input");
 const taskInputArea = document.querySelector(".task-input-area");
 const saveTaskBtn = document.querySelector(".save-task");
@@ -24,6 +26,12 @@ let showAllTasks = false;
 const statPad = document.querySelectorAll(".stat-card");
 const strong = document.querySelectorAll("strong");
 
+// hamburger menu toggle
+hamburger.addEventListener("click", () => {
+
+    sidebar.classList.toggle("open");
+
+});
 
 //event listener for the taskBtn
 
@@ -297,6 +305,25 @@ function loadTasks() {
 function renderTasks() {
 
     taskList.innerHTML = "";
+     if (tasks.length === 0) {
+
+        taskList.innerHTML = `
+            <div class="empty-state">
+
+                <div class="empty-icon">✓</div>
+
+                <h3>No tasks yet</h3>
+
+                <p>
+                    Add a task to start planning your day.
+                </p>
+
+            </div>
+        `;
+
+        return;
+    }
+
     
     let tasksToDisplay;
 
